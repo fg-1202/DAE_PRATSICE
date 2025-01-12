@@ -1,10 +1,17 @@
-function checkPasswordStrength(password) {
+/**
+ * 製作簡單的密碼強度檢查器
+   檢查長度、大小寫、數字、特殊符號
+   回傳密碼強度等級
+ */
+   function checkPasswordStrength(password) {
     let chars = password.split('')
+    //這部分將變量 hasUpper 初始化為 false，表示初始狀態為「沒有大寫字母」。
     let hasUpper = false
     let hasLower = false
     let hasDigit = false
     let hasSymbol = false
     chars.forEach(char => {
+    //用來獲取字符串中指定位置（這裡是索引 0）的字符的 Unicode 編碼
       let charCode = char.charCodeAt(0)
       let zeroCode = '0'.charCodeAt(0)
       let nineCode = '9'.charCodeAt(0)
@@ -12,6 +19,7 @@ function checkPasswordStrength(password) {
         hasUpper = true
       } else if (char.toUpperCase() != char) {
         hasLower = true
+        //0=48 9=57看ASCII TABLE 如果在這範圍內是數字 否則是英文或符號
       } else if (zeroCode <= charCode && charCode <= nineCode) {
         hasDigit = true
       } else {
@@ -46,6 +54,7 @@ function checkPasswordStrength(password) {
         '[fail]',
         { expectedScore, actualScore },
         ':',
+        //把PASSWORD有雙引號包住
         JSON.stringify(password),
       )
     }
