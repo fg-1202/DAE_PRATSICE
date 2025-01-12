@@ -6,6 +6,7 @@
    function checkPasswordStrength(password) {
     let chars = password.split('')
     //這部分將變量 hasUpper 初始化為 false，表示初始狀態為「沒有大寫字母」。
+    //關乎到計分
     let hasUpper = false
     let hasLower = false
     let hasDigit = false
